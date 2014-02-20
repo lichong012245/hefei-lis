@@ -1,0 +1,23 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" href="{% static "dist/themes/default/style.min.css" %}"/>
+<script src="{% static "dist/libs/jquery.js" %}"></script>
+<script src="{% static "dist/jstree.min.js" %}"></script>
+<script>
+$(function () { $('#jstree_demo_div').jstree(); });
+
+$('#jstree_demo_div').on("changed.jstree", function (e, data) {
+  console.log(data.selected);
+});
+
+$('button').on('click', function () {
+  $('#jstree').jstree(true).select_node('child_node_1');  
+});
+</script>
+</head>
+<body>
+<div id="jstree_demo_div"><div>{{ tree }}</div>
+<p>{{ tree }}</p>
+</body>
+</html>

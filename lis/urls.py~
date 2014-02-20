@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from family.views import Profile
+from django.conf.urls.static import static
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -7,7 +7,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    #url(r'^family/member/(?P<slug>\w+)/$', 'lis.views.Profile', name='profile'),
+    url(r'^family/', include('family.urls')),
     # url(r'^lis/', include('lis.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
@@ -15,4 +15,4 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
      url(r'^admin/', include(admin.site.urls)),
-)
+)+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
