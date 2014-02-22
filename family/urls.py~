@@ -1,8 +1,8 @@
 from django.conf.urls import patterns, url
 from family.views import MemberDetailView, TreeView
-from django.conf.urls.static import static
+
 
 urlpatterns = patterns('',
     url(r'^tree/$', TreeView.as_view(), name='family-tree'),
-    url(r'^member/(?P<slug>[-_\w]+)/$', MemberDetailView.as_view(), name='member-detail'),
-)+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    url(r'^member/(?P<pk>d+)/$', MemberDetailView.as_view(), name='member-detail'),
+)

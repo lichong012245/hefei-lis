@@ -17,7 +17,7 @@ class Member(MP_Node):
 
    node_order_by = ['name']
    def __unicode__(self):
-        return 'Name: %s' % self.name
+        return self.name
  
 class postimage(models.Model):
     image=models.ImageField(upload_to='family/orig/',blank=True, null=True)

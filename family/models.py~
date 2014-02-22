@@ -17,10 +17,10 @@ class Member(MP_Node):
 
    node_order_by = ['name']
    def __unicode__(self):
-        return 'Name: %s' % self.name
+        return self.name
  
 class postimage(models.Model):
-    image=models.ImageField(upload_to='family/thumbnail/',blank=True, null=True)
+    image=models.ImageField(upload_to='family/orig/',blank=True, null=True)
     thumbnail=models.ImageField(upload_to='family/thumbnail/',blank=True, null=True,editable=False)
     member=models.ForeignKey(Member)
 

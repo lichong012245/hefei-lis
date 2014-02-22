@@ -1,7 +1,7 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <head>
-<link rel="stylesheet" href="{% static "dist/themes/default/style.min.css" %}"/>
+<link rel="stylesheet" href="{% static "dist/themes/default/style.css" %}"/>
 <script src="{% static "dist/libs/jquery.js" %}"></script>
 <script src="{% static "dist/jstree.min.js" %}"></script>
 <script>
@@ -17,7 +17,22 @@ $('button').on('click', function () {
 </script>
 </head>
 <body>
-<div id="jstree_demo_div"><div>{{ tree }}</div>
-<p>{{ tree }}</p>
+<div id="jstree_demo_div">
+{{ tree }}
+
+{% for item, info in tree %}
+    {% if info.open %}
+        <ul><li data-jstree='{"icon":"{% static "dist/themes/default/Person.png" %}"}'>
+    {% else %}
+        </li><li data-jstree='{"icon":"{% static "dist/themes/default/Person.png" %}"}'>
+    {% endif %}
+
+    <a href="{% url 'member-detail' item.pk %}">{{ item }}</a>
+
+    {% for close in info.close %}
+        </li></ul>
+    {% endfor %}
+{% endfor %}
+</div>
 </body>
 </html>
