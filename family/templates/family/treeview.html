@@ -4,20 +4,36 @@
 <link rel="stylesheet" href="{% static "dist/themes/default/style.css" %}"/>
 <script src="{% static "dist/libs/jquery.js" %}"></script>
 <script src="{% static "dist/jstree.min.js" %}"></script>
+
 <script>
-$(function () { $('#jstree_demo_div').jstree(); });
-
-$('#jstree_demo_div').on("changed.jstree", function (e, data) {
-  console.log(data.selected);
+$(function () { $('#jstree_div').jstree({
+"plugins" : [ "themes","xml_data", "ui","types","search" ]
+}); 
+var to = false;
+  $('#jstree_div_q').keyup(function () {
+    if(to) { clearTimeout(to); }
+    to = setTimeout(function () {
+      var v = $('#jstree_div_q').val();
+      $('#jstree_div').jstree(true).search(v);
+    }, 250);
+  });
 });
 
-$('button').on('click', function () {
-  $('#jstree').jstree(true).select_node('child_node_1');  
+$('#jstree_div').on("select_node.jstree", function (e, data) {
+  document.location=data.instance.get_node(data.node,true).children('a').attr('href');
 });
+
+
 </script>
 </head>
 <body>
-<div id="jstree_demo_div">
+
+
+<input type="text" id="jstree_div_q" value="" style="margin:0em auto 1em auto; display:block; padding:4px; border-radius:4px; border:1px solid silver;"/>
+   
+
+
+<div id="jstree_div">
 {{ tree }}
 
 {% for item, info in tree %}
@@ -34,5 +50,7 @@ $('button').on('click', function () {
     {% endfor %}
 {% endfor %}
 </div>
+
+<div></div>
 </body>
 </html>
