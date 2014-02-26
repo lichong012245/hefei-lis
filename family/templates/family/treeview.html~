@@ -6,8 +6,10 @@
 <script src="{% static "dist/jstree.min.js" %}"></script>
 
 <script>
-$(function () { $('#jstree_div').jstree({
-"plugins" : [ "themes","xml_data", "ui","types","search" ]
+$(function () { $('#jstree_div').on("select_node.jstree", function (e, data) {
+           document.location = data.instance.get_node(data.node, true).children('a').attr('href');
+    }).jstree({
+"plugins" : [ "themes", "ui","search" ]
 }); 
 var to = false;
   $('#jstree_div_q').keyup(function () {
@@ -20,8 +22,8 @@ var to = false;
 });
 
 $('#jstree_div').on("select_node.jstree", function (e, data) {
-  document.location=data.instance.get_node(data.node,true).children('a').attr('href');
-});
+           document.location = data.instance.get_node(data.node, true).children('a').attr('href');
+    }).jstree();
 
 
 </script>
@@ -34,7 +36,7 @@ $('#jstree_div').on("select_node.jstree", function (e, data) {
 
 
 <div id="jstree_div">
-{{ tree }}
+
 
 {% for item, info in tree %}
     {% if info.open %}

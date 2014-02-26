@@ -136,6 +136,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'family',
     'treebeard',
+     'dajaxice',
+     'dajax',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
      
