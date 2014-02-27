@@ -5,21 +5,13 @@
 <!--script src="{% static "dist/libs/jquery.js" %}"></script-->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="{% static "dist/jstree.min.js" %}"></script>
+<script type="text/javascript" src="{% static "dajax/jquery.dajax.core.js" %}"></script>
 
 <script>
 $(function () { $('#jstree_div').on("select_node.jstree", function (e, data) {
-           var loc = data.instance.get_node(data.node, true).children('a').attr('href');
-        $.ajax({
-        type: "GET",
-        url: loc, 
-        success: function(data) {
-            $("#name").html(data.pk);
-            $("#sex").html(data.sex);
-        },
-        crossDomain: false
-    }).fail(function() {
-    alert(loc);
-  });            
+           var id = data.instance.get_node(data.node, true).children('a').attr('id');           
+           Dajaxice.family.get_member(Dajax.process, {'pk':id});
+          
     }).jstree({
 "plugins" : [ "themes", "ui","search" ]
 }); 
@@ -33,14 +25,7 @@ var to = false;
   });
 });
 </script>
-<script>
-function send_request(){
-  $.get("/family/test/", function(data){
-    $("#name").html(data.name);
-    $("#sex").html(data.sex);
-  });
-}
-</script>
+
 </head>
 <body>
 
@@ -59,7 +44,7 @@ function send_request(){
         </li><li data-jstree='{"icon":"{% static "dist/themes/default/Person.png" %}"}'>
     {% endif %}
 
-    <a href="{% url 'member-detail' item.pk %}">{{ item }}</a>
+    <a href="{% url 'member-detail' item.pk %}" id="{{ item.pk }}">{{ item }}</a>
 
     {% for close in info.close %}
         </li></ul>
@@ -72,7 +57,7 @@ function send_request(){
 <label>Sex: </label><p id="sex"></p>
 <label>Desc: </label><p id="desc"></p>
 <label>branch: </label><p id="branch">1</p>
-<input type="button" onclick="send_request();" value="Request this page with AJAX" /><br/>
+
 </div>
 </body>
 </html>
