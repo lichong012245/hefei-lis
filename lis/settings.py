@@ -3,6 +3,8 @@
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+DAJAXICE_MEDIA_PREFIX="dajaxice"
+
 import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -91,6 +93,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'dajaxice.finders.DajaxiceFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
@@ -101,7 +104,7 @@ SECRET_KEY = '5392ofi-dkrut*j0nrql2-j4&amp;0pr^j18v__@1wvc29c8@%@(wj'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -135,7 +138,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',   
     'django.contrib.admin',
     'family',
-'south',
+     'south',
     'treebeard',
      'dajaxice',
      'dajax',
