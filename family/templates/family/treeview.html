@@ -9,10 +9,17 @@
 <script>
 $(function () { $('#jstree_div').on("select_node.jstree", function (e, data) {
            var loc = data.instance.get_node(data.node, true).children('a').attr('href');
-            $.get(loc, function(data){
-               $("#name").html(data.pk);
-               $("#sex").html(data.sex);
-          });
+        $.ajax({
+        type: "GET",
+        url: loc, 
+        success: function(data) {
+            $("#name").html(data.pk);
+            $("#sex").html(data.sex);
+        },
+        crossDomain: false
+    }).fail(function() {
+    alert(loc);
+  });            
     }).jstree({
 "plugins" : [ "themes", "ui","search" ]
 }); 
@@ -28,9 +35,9 @@ var to = false;
 </script>
 <script>
 function send_request(){
-  $.get("/family/member/3/", function(data){
+  $.get("/family/test/", function(data){
     $("#name").html(data.name);
-    $("#sex").html(data.pk);
+    $("#sex").html(data.sex);
   });
 }
 </script>

@@ -29,7 +29,8 @@ class TreeView(TemplateView):
 
 class HybridDetailView(JSONResponseMixin, SingleObjectTemplateResponseMixin, BaseDetailView):
     def render_to_response(self, context):
-        if self.request.is_ajax():            
+        if self.request.is_ajax():
+            obj = context['object']            
             return JSONResponseMixin.render_to_response(self, obj)
         else:
             return SingleObjectTemplateResponseMixin.render_to_response(self, context)
