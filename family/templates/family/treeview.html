@@ -7,7 +7,11 @@
 
 <script>
 $(function () { $('#jstree_div').on("select_node.jstree", function (e, data) {
-           document.location = data.instance.get_node(data.node, true).children('a').attr('href');
+           var loc = data.instance.get_node(data.node, true).children('a').attr('href');
+           $.get(loc, function(data){
+              $("#name").html(data.name);
+              $("#sex").html(data.sex);
+               });
     }).jstree({
 "plugins" : [ "themes", "ui","search" ]
 }); 
@@ -50,6 +54,11 @@ var to = false;
 {% endfor %}
 </div>
 
-<div></div>
+<div>
+<label>Name: <label><p id="name"></p>
+<label>Sex: <label><p id="sex"></p>
+<label>Desc: <label><p id="desc"></p>
+<label>branch: <label><p id="branch"></p>
+</div>
 </body>
 </html>
