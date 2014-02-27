@@ -2,16 +2,17 @@
 <!DOCTYPE html>
 <head>
 <link rel="stylesheet" href="{% static "dist/themes/default/style.css" %}"/>
-<script src="{% static "dist/libs/jquery.js" %}"></script>
+<!--script src="{% static "dist/libs/jquery.js" %}"></script-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="{% static "dist/jstree.min.js" %}"></script>
 
 <script>
 $(function () { $('#jstree_div').on("select_node.jstree", function (e, data) {
            var loc = data.instance.get_node(data.node, true).children('a').attr('href');
-           $.get(loc, function(data){
-              $("#name").html(data.name);
-              $("#sex").html(data.sex);
-               });
+            $.get(loc, function(data){
+    $("#name").html(data.pk);
+    $("#sex").html(data.sex);
+  });
     }).jstree({
 "plugins" : [ "themes", "ui","search" ]
 }); 
@@ -55,10 +56,10 @@ var to = false;
 </div>
 
 <div>
-<label>Name: <label><p id="name"></p>
-<label>Sex: <label><p id="sex"></p>
-<label>Desc: <label><p id="desc"></p>
-<label>branch: <label><p id="branch"></p>
+<label>Name: </label><p id="name"></p>
+<label>Sex: </label><p id="sex"></p>
+<label>Desc: </label><p id="desc"></p>
+<label>branch: </label><p id="branch">1</p>
 </div>
 </body>
 </html>
