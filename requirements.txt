@@ -1,0 +1,17 @@
+Django==1.5
+Pillow==2.3.0
+South==0.8.4
+argparse==1.2.1
+boto==2.25.0
+decorator==3.4.0
+-e git://github.com/joestump/django-ajax@42c5ad042c543ff2bf66e22b2774581d01cc1c89#egg=django_ajax-master
+django-dajax==0.9.2
+django-dajaxice==0.5.5
+django-treebeard==2.0b2
+lucene-querybuilder==0.2
+neo4jrestclient==2.0.0
+python-dateutil==2.2
+requests==2.1.0
+simplejson==3.3.3
+six==1.5.2
+wsgiref==0.1.2

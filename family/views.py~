@@ -20,5 +20,5 @@ class TreeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(TreeView, self).get_context_data(**kwargs)        
-        context['tree'] = json.dumps(json.loads(Member.dump_bulk(),default=self.encode_datetime))
+        context['tree'] = Member.get_annotated_list()
         return context

@@ -135,6 +135,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',   
     'django.contrib.admin',
     'family',
+'south',
     'treebeard',
      'dajaxice',
      'dajax',

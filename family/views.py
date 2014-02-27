@@ -11,12 +11,7 @@ class MemberDetailView(DetailView):
     model = Member
 
 class TreeView(TemplateView):
-    template_name = "family/treeview.html"  
-
-    def encode_datetime(obj):
-	if isinstance(obj, datetime.datetime):
-		return obj.astimezone(tz.tzutc()).strftime('%Y-%m-%dT%H:%M:%SZ')
-	raise TypeError(repr(o) + " is not JSON serializable") 
+    template_name = "family/treeview.html"      
 
     def get_context_data(self, **kwargs):
         context = super(TreeView, self).get_context_data(**kwargs)        

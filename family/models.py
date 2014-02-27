@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 from treebeard.mp_tree import MP_Node
 from PIL import Image
@@ -6,14 +7,14 @@ import io
 
 class Member(MP_Node):
    male_or_female=(
-('M','Male'),
-('F','Female'),
+(u'男',u'男'),
+(u'女',u'女'),
 )
-   name = models.CharField(max_length=100)
-   slug = models.SlugField()
+   name = models.CharField(max_length=100)   
    date_of_birth = models.DateField(blank=True)
    sex = models.CharField(choices=male_or_female,max_length=10)
-   desc=models.CharField(max_length=5000)   
+   desc=models.CharField(max_length=5000)
+   branch=models.CharField(max_length=10,blank=True)   
 
    node_order_by = ['name']
    def __unicode__(self):
