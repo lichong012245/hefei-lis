@@ -10,11 +10,19 @@ class Member(MP_Node):
 (u'男',u'男'),
 (u'女',u'女'),
 )
+   tree_branch=(
+('1',u'一房'),
+('2',u'二房'),
+('3',u'三房'),
+('4',u'四房'),
+('5',u'五房'),
+('5',u'六房'),
+)
    name = models.CharField(max_length=100)   
    date_of_birth = models.DateField(blank=True)
    sex = models.CharField(choices=male_or_female,max_length=10)
    desc=models.CharField(max_length=5000)
-   branch=models.CharField(max_length=10,blank=True)   
+   branch=models.CharField(choices=tree_branch,max_length=10,blank=True)   
 
    node_order_by = ['name']
    def __unicode__(self):
