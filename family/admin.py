@@ -3,15 +3,12 @@ from treebeard.admin import TreeAdmin
 from treebeard.forms import movenodeform_factory
 from family.models import Member, postimage, UserProfile
 from django import forms
+from family.forms import UserProfileAdminForm
 
 
 class ImageInline(admin.TabularInline):
     model = postimage
 
-class UserProfileForm(forms.ModelForm):
-    desc = forms.CharField(widget=forms.Textarea)
-    class Meta:
-            model = UserProfile
 
 class MyAdmin(TreeAdmin):
     form = movenodeform_factory(Member)
@@ -20,7 +17,7 @@ class MyAdmin(TreeAdmin):
     ]
     
 class UserProfileAdmin(admin.ModelAdmin):
-    form = UserProfileForm
+    form = UserProfileAdminForm
 
 
 admin.site.register(Member, MyAdmin)
