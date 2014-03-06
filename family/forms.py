@@ -10,6 +10,13 @@ class UserCreateForm(UserCreationForm):
              model = User
              fields = ('username','email')
 
+class UserFormForFront(forms.ModelForm):
+   
+
+   class Meta:
+         model= User
+         fields = ('first_name','last_name','email')
+
 
 class UserForm(forms.ModelForm):
    password= forms.CharField(widget=forms.PasswordInput())

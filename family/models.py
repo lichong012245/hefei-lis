@@ -40,7 +40,7 @@ class UserProfile(models.Model):
 ('5',u'六房'),
 )
   user=models.OneToOneField(User)
-  member=models.OneToOneField(Member,blank=True)
+  member=models.OneToOneField(Member,blank=True,null =True)
   self_desc=models.CharField(max_length=5000,blank=True)
   branch=models.CharField(choices=tree_branch,max_length=10,blank=True)
   

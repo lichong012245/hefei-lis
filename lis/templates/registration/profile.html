@@ -1,0 +1,8 @@
+Welcom, <b>{{ user }}</b>
+Please update your profile here
+<form method="post" action="">
+{% csrf_token %}
+{{ user_form.as_p }}
+{{ profile_form.as_p }}
+<input type="submit" value="save" />
+</form>
