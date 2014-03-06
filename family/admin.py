@@ -33,6 +33,5 @@ class NewUserAdmin(UserAdmin):
     
 
 admin.site.register(Member, MyAdmin)
-admin.site.register(UserProfile,UserProfileAdmin)
 admin.site.unregister(User)
 admin.site.register(User, NewUserAdmin)

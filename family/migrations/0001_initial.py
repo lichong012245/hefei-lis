@@ -26,7 +26,7 @@ class Migration(SchemaMigration):
         db.create_table(u'family_userprofile', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('user', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['auth.User'], unique=True)),
-            ('member', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['family.Member'], unique=True, blank=True)),
+            ('member', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['family.Member'], unique=True, null=True, blank=True)),
             ('self_desc', self.gf('django.db.models.fields.CharField')(max_length=5000, blank=True)),
             ('branch', self.gf('django.db.models.fields.CharField')(max_length=10, blank=True)),
         ))
@@ -113,7 +113,7 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'UserProfile'},
             'branch': ('django.db.models.fields.CharField', [], {'max_length': '10', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'member': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['family.Member']", 'unique': 'True', 'blank': 'True'}),
+            'member': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['family.Member']", 'unique': 'True', 'null': 'True', 'blank': 'True'}),
             'self_desc': ('django.db.models.fields.CharField', [], {'max_length': '5000', 'blank': 'True'}),
             'user': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['auth.User']", 'unique': 'True'})
         }
