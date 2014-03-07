@@ -1,0 +1,41 @@
+{% load staticfiles %}
+{% load compress %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Li's Family</title>
+        {% compress css %}
+	<link rel="stylesheet" href="{% static "lis/css/style.css" %}" type="text/css">
+         {% endcompress %}
+</head>
+<body>
+<div id="header">
+		<div class="wrapper clearfix">
+			<div id="logo">
+				
+			</div>
+			<ul id="navigation">
+				<li class="selected">
+					<a href="/">Home</a>
+				</li>
+				<li>
+					<a href="/family/tree/">Tree</a>
+				</li>
+				<li>
+					<a href="/family/contact/">Family Contacts</a>
+				</li>
+				<li>
+					<a href="#">Gallery</a>
+				</li>
+				<li>
+					<a href="/contact/">Contact Us</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+{% block body %}
+{% endblock %}
+
+</body>
+</html>

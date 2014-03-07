@@ -11,7 +11,12 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
-
+## Django static compressor settings
+COMPRESS_ENABLED = True
+COMPRESS_CSS_FILTERS =[
+'compressor.filters.template.TemplateFilter',
+'compressor.filters.css_default.CssAbsoluteFilter',
+]
 
 SESSION_ENGINE=('django.contrib.sessions.backends.signed_cookies')
 
@@ -95,6 +100,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'dajaxice.finders.DajaxiceFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+      'compressor.finders.CompressorFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -142,6 +148,7 @@ INSTALLED_APPS = (
     'treebeard',
      'dajaxice',
      'dajax',
+     'compressor',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
      

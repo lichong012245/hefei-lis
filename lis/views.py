@@ -4,10 +4,11 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.template import RequestContext
 
+def Index(request):
+    return render(request,'lis/index.html')
 
-
-def Home(request):
-      return render(request, 'registration/profile.html',{'profile_form':profile_form})
+def Contact(request):
+      return render(request, 'lis/contact.html')
 
 def UserProfile(request):      
       if request.method == 'POST':           
