@@ -1,9 +1,19 @@
 {% load staticfiles %}
 {% load dajaxice_templatetags %}
-<!DOCTYPE html>
-<head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-GB">
+<head>	
+	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />	
+	<meta name="robots" content="index, follow" />	
+	<link rel="stylesheet" type="text/css" href="{% static "family/css/screen.css" %}"  media="screen" />	
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">    
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script>
+  $(function() {
+    $( "#resizable" ).resizable();
+  });
+  </script>
 <link rel="stylesheet" href="{% static "dist/themes/default/style.css" %}"/>
-<!--script src="{% static "dist/libs/jquery.js" %}"></script-->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="{% static "dist/jstree.min.js" %}"></script>
 <script type="text/javascript" src="{% static "dajax/jquery.dajax.core.js" %}"></script>
@@ -30,8 +40,38 @@ var to = false;
 </head>
 <body>
 
+<div id="header">
+	
+	<h1>Family Tree</h1>
+	<h2>Click on names to view profile information.</h2>
+	<ul>
+		<li><a href="#">3 Column <span>Holy Grail</span></a></li>
+		<li><a href="#">3 Column <span>Blog Style</span></a></li>
+		<li><a href="#" class="active">2 Column <span>Left Menu</span></a></li>
+		<li><a href="#">2 Column <span>Right Menu</span></a></li>
+		<li><a href="#">2 Column <span>Double Page</span></a></li>
+		<li><a href="#">1 Column <span>Full Page</span></a></li>
+		<li><a href="#">Stacked <span>columns</span></a></li>
+	</ul>
+	<p id="layoutdims">Welcome: <a href="#">XXXX</a> | <a href="#">Log Out</a></p>
+</div>
+<div class="colmask leftmenu">
+	<div class="colleft">
+		<div class="col1" id="resizable">
+			<!-- Column 1 start -->
+			<div>
+<label>Name: </label><p id="name"></p>
+<label>Sex: </label><p id="sex"></p>
+<label>Desc: </label><p id="desc"></p>
+<label>branch: </label><p id="branch"></p>
 
-<input type="text" id="jstree_div_q" value="" style="margin:0em auto 1em auto; display:block; padding:4px; border-radius:4px; border:1px solid silver;"/>
+</div>
+			<!-- Column 1 end -->
+		</div>
+		<div class="col2">
+			<!-- Column 2 start -->
+			
+			<input type="text" id="jstree_div_q" value="" style="margin:0em auto 1em auto; display:block; padding:4px; border-radius:4px; border:1px solid silver;"/>
    
 
 
@@ -52,13 +92,13 @@ var to = false;
     {% endfor %}
 {% endfor %}
 </div>
-
-<div>
-<label>Name: </label><p id="name"></p>
-<label>Sex: </label><p id="sex"></p>
-<label>Desc: </label><p id="desc"></p>
-<label>branch: </label><p id="branch">1</p>
-
+			<!-- Column 2 end -->
+		</div>
+	</div>
 </div>
+<div id="footer">
+	<p>Disclaimer <a href="#">XXX</a></p>
+</div>
+
 </body>
 </html>
