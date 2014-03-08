@@ -6,13 +6,14 @@ from django.contrib import admin, auth
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
 from family.forms import UserCreateForm
-from views import UserProfile, Index, Contact
+from views import UserProfile, Index, Contact,Gallery
 
 dajaxice_autodiscover()
 admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$',Index, name='index'),
+    url(r'^gallery/$',Gallery, name='gallery'),
     url(r'^family/', include('family.urls')),
     url(r'^accounts/register/$', CreateView.as_view(template_name='registration/register.html',form_class=UserCreateForm,success_url='/'),name='register'),
     url(r'^accounts/profile/$', UserProfile,name='profile'),

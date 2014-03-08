@@ -45,15 +45,19 @@ var to = false;
 	<h1>Family Tree</h1>
 	<h2>Click on names to view profile information.</h2>
 	<ul>
-		<li><a href="#">3 Column <span>Holy Grail</span></a></li>
-		<li><a href="#">3 Column <span>Blog Style</span></a></li>
-		<li><a href="#" class="active">2 Column <span>Left Menu</span></a></li>
-		<li><a href="#">2 Column <span>Right Menu</span></a></li>
-		<li><a href="#">2 Column <span>Double Page</span></a></li>
-		<li><a href="#">1 Column <span>Full Page</span></a></li>
-		<li><a href="#">Stacked <span>columns</span></a></li>
+		<li><a href="{% url 'index' %}"><span>Home page</span></a></li>
+		<li><a href="{% url 'index' %}"><span>Family Contact</span></a></li>
+		<li><a href="{% url 'index' %}" class="active"><span>Gallery</span></a></li>
+                <li><a href="{% url 'contact' %}"><span>Contact Us</span></a></li>
+		
 	</ul>
-	<p id="layoutdims">Welcome: <a href="#">XXXX</a> | <a href="#">Log Out</a></p>
+        {% if not user.is_anonymous %}
+	<p id="layoutdims">Welcome: <a href="{% url 'profile' %}">{{ user }}</a> | <a href="{% url 'logout' %}">Log Out</a></p>
+        {% else %}
+
+<p id="layoutdims">Please Register: <a href="{% url 'register' %}">here</a> | <a href="{% url 'login' %}">Log in</a></p>
+        {% endif %}
+        
 </div>
 <div class="colmask leftmenu">
 	<div class="colleft">
@@ -80,9 +84,9 @@ var to = false;
 
 {% for item, info in tree %}
     {% if info.open %}
-        <ul><li data-jstree='{"icon":"{% static "dist/themes/default/Person.png" %}"}'>
+        <ul><li class="jstree-open" data-jstree='{"icon":"{% static "dist/themes/default/Person.png" %}"}'>
     {% else %}
-        </li><li data-jstree='{"icon":"{% static "dist/themes/default/Person.png" %}"}'>
+        </li><li class="jstree-open" data-jstree='{"icon":"{% static "dist/themes/default/Person.png" %}"}'>
     {% endif %}
 
     <a href="{% url 'member-detail' item.pk %}" id="{{ item.pk }}">{{ item }}</a>

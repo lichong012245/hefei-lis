@@ -7,6 +7,10 @@ from django.template import RequestContext
 def Index(request):
     return render(request,'lis/index.html')
 
+def Gallery(request):
+    return render(request,'lis/gallery.html')
+
+
 def Contact(request):
       return render(request, 'lis/contact.html')
 
