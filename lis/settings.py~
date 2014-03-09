@@ -1,7 +1,7 @@
 # Django settings for lis project.
 
 DEBUG = False
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
 DAJAXICE_MEDIA_PREFIX="dajaxice"
 
