@@ -15,16 +15,16 @@ framework.
 """
 import os
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "lis.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "lis.settings.production")
 
 # This application object is used by any WSGI server configured to use this
 # file. This includes Django's development server, if the WSGI_APPLICATION
 # setting points here.
-if True:
+if not True:
  from django.core.wsgi import get_wsgi_application
  application = get_wsgi_application()
 
-if not True:
+if True:
  from django.core.wsgi import get_wsgi_application
  from dj_static import Cling
 
