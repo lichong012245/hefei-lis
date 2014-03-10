@@ -1,12 +1,16 @@
 {% load staticfiles %}
 {% load dajaxice_templatetags %}
+{% load compress %}
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-GB">
 <head>	
 	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />	
-	<meta name="robots" content="index, follow" />	
+	<meta name="robots" content="index, follow" />
+        {% compress css %}	
 	<link rel="stylesheet" type="text/css" href="{% static "family/css/screen.css" %}"  media="screen" />	
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">    
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"> 
+        {% endcompress %}   
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<script>
   $(function() {
@@ -54,6 +58,9 @@ var to = false;
         {% if not user.is_anonymous %}
 	<p id="layoutdims">Welcome: <a href="{% url 'profile' %}">{{ user }}</a> | <a href="{% url 'logout' %}">Log Out</a></p>
         {% else %}
+
+<p id="layoutdims">Please Register: <a href="{% url 'register' %}">here</a> | <a href="{% url 'login' %}">Log in</a></p>
+        {% endif %}
         
 </div>
 <div class="colmask leftmenu">
