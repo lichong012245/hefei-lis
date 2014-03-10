@@ -5,7 +5,7 @@
 <head>	
 	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />	
 	<meta name="robots" content="index, follow" />	
-	<link rel="stylesheet" type="text/css" href="{% static "family/css/screen.css" %}"  media="screen" />	
+	<link rel="stylesheet" type="text/css" href="{% static "family/css/screen1.css" %}"  media="screen" />	
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">    
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<script>
@@ -36,46 +36,32 @@ var to = false;
   });
 });
 </script>
+
 {% dajaxice_js_import %}
 </head>
-<body>
 
+<body>
 <div id="header">
-	
-	<h1>Family Tree</h1>
-	<h2>Click on names to view profile information.</h2>
-	<ul>
-		<li><a href="{% url 'index' %}"><span>Home page</span></a></li>
-		<li><a href="{% url 'index' %}"><span>Family Contact</span></a></li>
-		<li><a href="{% url 'index' %}" class="active"><span>Gallery</span></a></li>
-                <li><a href="{% url 'contact' %}"><span>Contact Us</span></a></li>
-		
-	</ul>
-        {% if not user.is_anonymous %}
+<h1>lee family</h>
+</div>
+<div id="nav">
+<ul>
+<li>home</li>
+</ul>
+<div id="login">
+{% if not user.is_anonymous %}
 	<p id="layoutdims">Welcome: <a href="{% url 'profile' %}">{{ user }}</a> | <a href="{% url 'logout' %}">Log Out</a></p>
         {% else %}
 
 <p id="layoutdims">Please Register: <a href="{% url 'register' %}">here</a> | <a href="{% url 'login' %}">Log in</a></p>
         {% endif %}
-        
 </div>
-<div class="colmask leftmenu">
-	<div class="colleft">
-		<div class="col1" id="resizable">
-			<!-- Column 1 start -->
-			<div>
-<label>Name: </label><p id="name"></p>
-<label>Sex: </label><p id="sex"></p>
-<label>Desc: </label><p id="desc"></p>
-<label>branch: </label><p id="branch"></p>
+</div>
 
-</div>
-			<!-- Column 1 end -->
-		</div>
-		<div class="col2">
-			<!-- Column 2 start -->
-			
-			<input type="text" id="jstree_div_q" value="" style="margin:0em auto 1em auto; display:block; padding:4px; border-radius:4px; border:1px solid silver;"/>
+<div id="sidebar">
+     <span id="position"></span>
+  
+<input type="text" id="jstree_div_q" value="" style="margin:0em auto 1em auto; display:block; padding:4px; border-radius:4px; border:1px solid silver;"/>
    
 
 
@@ -96,13 +82,17 @@ var to = false;
     {% endfor %}
 {% endfor %}
 </div>
-			<!-- Column 2 end -->
-		</div>
-	</div>
+ 
 </div>
-<div id="footer">
-	<p>Disclaimer <a href="#">XXX</a></p>
+<div id="main">
+<label>Name: </label><p id="name"></p>
+<label>Sex: </label><p id="sex"></p>
+<label>Desc: </label><p id="desc"></p>
+<label>branch: </label><p id="branch"></p>
+
 </div>
+
+
 
 </body>
 </html>

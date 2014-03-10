@@ -36,6 +36,38 @@ var to = false;
   });
 });
 </script>
+<script>
+var dragging = false;
+$('#dragbar').mousedown(function(e){
+   e.preventDefault();
+
+   dragging = true;
+   var main = $('#main');
+   var ghostbar = $('<div>',
+                    {id:'ghostbar',
+                     css: {
+                            height: main.outerHeight(),
+                            top: main.offset().top,
+                            left: main.offset().left
+                           }
+                    }).appendTo('body');
+
+    $(document).mousemove(function(e){
+      ghostbar.css("left",e.pageX+2);
+   });
+});
+
+$(document).mouseup(function(e){
+   if (dragging) 
+   {
+       $('#sidebar').css("width",e.pageX+2);
+       $('#main').css("left",e.pageX+2);
+       $('#ghostbar').remove();
+       $(document).unbind('mousemove');
+       dragging = false;
+   }
+ });
+</script>
 {% dajaxice_js_import %}
 </head>
 <body>
@@ -61,7 +93,7 @@ var to = false;
 </div>
 <div class="colmask leftmenu">
 	<div class="colleft">
-		<div class="col1" id="resizable">
+		<div class="col1" id="main">
 			<!-- Column 1 start -->
 			<div>
 <label>Name: </label><p id="name"></p>
@@ -72,7 +104,7 @@ var to = false;
 </div>
 			<!-- Column 1 end -->
 		</div>
-		<div class="col2">
+		<div class="col2" id="sidebar">
 			<!-- Column 2 start -->
 			
 			<input type="text" id="jstree_div_q" value="" style="margin:0em auto 1em auto; display:block; padding:4px; border-radius:4px; border:1px solid silver;"/>
@@ -96,6 +128,7 @@ var to = false;
     {% endfor %}
 {% endfor %}
 </div>
+<div id="dragbar"></div>
 			<!-- Column 2 end -->
 		</div>
 	</div>

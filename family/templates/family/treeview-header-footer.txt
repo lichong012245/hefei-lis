@@ -1,0 +1,14 @@
+<div id="header">	
+	
+        {% if not user.is_anonymous %}
+	<p id="layoutdims">Welcome: <a href="{% url 'profile' %}">{{ user }}</a> | <a href="{% url 'logout' %}">Log Out</a></p>
+        {% else %}
+
+<p id="layoutdims">Please Register: <a href="{% url 'register' %}">here</a> | <a href="{% url 'login' %}">Log in</a></p>
+        {% endif %}
+        
+</div>
+
+<div id="footer">
+	<p>Disclaimer <a href="#">XXX</a></p>
+</div>
