@@ -1,7 +1,7 @@
 # Django settings for lis project.
 
 DEBUG = False
-TEMPLATE_DEBUG = False
+TEMPLATE_DEBUG = DEBUG
 
 DAJAXICE_MEDIA_PREFIX="dajaxice"
 
@@ -27,7 +27,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
          'NAME':  '', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        #'NAME':  'test_database.sqlite3',                      # Or path to database file if using sqlite3.
+         'NAME':  'test_database.sqlite3',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -145,7 +145,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',   
     'django.contrib.admin',
     'family',
-    # 'south',
+     'south',
     'treebeard',
      'dajaxice',
      'dajax',
@@ -194,7 +194,6 @@ TEMPLATE_CONTEXT_PROCESSORS=("django.contrib.auth.context_processors.auth",
 "django.core.context_processors.request",)
 
 
-
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
 DATABASES['default'] =  dj_database_url.config()
@@ -214,3 +213,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+

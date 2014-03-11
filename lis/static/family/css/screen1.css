@@ -1,0 +1,39 @@
+body,html{width:100%;height:100%;padding:0;margin:0;}
+
+#header{
+padding: 5px 10px;
+}
+
+#login{
+float:right;
+}
+#main{
+   background-color: white;
+   float: right;
+   position: absolute;
+   height:500px;
+   right: 0;
+   left:200px;
+   margin-top:10px;
+    
+}
+#sidebar{
+   background-color: lightgray;
+    
+   margin-top:10px;
+   width:200px;
+   float: left;
+   position: absolute;
+   height:500px;
+   overflow-y: hidden;
+}
+.wrap{
+position:relative;
+margin: 0 auto;
+width:900px;
+}
+#header{
+width:100%;
+float:left;
+}
+

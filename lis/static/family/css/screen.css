@@ -147,3 +147,11 @@ img {
 	padding:10px;
 	margin:0;
 }
+
+#dragbar{
+background-color:black;
+height:100%;
+float:right;
+width:3px;
+cursor:col-resize;
+}
