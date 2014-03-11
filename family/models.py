@@ -28,7 +28,7 @@ class Member(MP_Node):
    address = models.CharField(max_length=5000,blank=True,null=True)
    branch=models.CharField(choices=tree_branch,max_length=10,blank=True)   
 
-   node_order_by = ['path']
+   
    def __unicode__(self):
         return self.name
 
