@@ -42,11 +42,13 @@ var to = false;
 
 <body>
 <div id="header">
+<div class="wrap">
 <h1>lee family</h>
+</div>
 </div>
 <div id="nav">
 <ul>
-<li>home</li>
+<li><a href="{% url "index" %}">home</a></li>
 </ul>
 <div id="login">
 {% if not user.is_anonymous %}
@@ -70,9 +72,9 @@ var to = false;
 
 {% for item, info in tree %}
     {% if info.open %}
-        <ul><li class="jstree-open" data-jstree='{"icon":"{% static "dist/themes/default/Person.png" %}"}'>
+        <ul><li class="jstree-open" data-jstree='{"icon":"{% static "dist/themes/default/person.png" %}"}'>
     {% else %}
-        </li><li class="jstree-open" data-jstree='{"icon":"{% static "dist/themes/default/Person.png" %}"}'>
+        </li><li class="jstree-open" data-jstree='{"icon":"{% static "dist/themes/default/person.png" %}"}'>
     {% endif %}
 
     <a href="{% url 'member-detail' item.pk %}" id="{{ item.pk }}">{{ item }}</a>
