@@ -27,7 +27,7 @@ if not DEBUG:
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
          'NAME':  '', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-         'NAME':  'test_database.sqlite3',                      # Or path to database file if using sqlite3.
+                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
