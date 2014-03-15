@@ -1,5 +1,55 @@
-<form method="post" action="">
-{% csrf_token %}
-{{ form.as_p }}
-<input type="submit" value="register" />
-</form>
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6 ielt8"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7 ielt8"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>李家大院</title>
+<link rel="stylesheet" type="text/css" href="{% static "lis/css/accounts.css" %}" />
+</head>
+<body>
+<div class="container">
+	<section id="content">                
+		<form method="post" action="">
+                 {% csrf_token %}
+			<h1>用户注册</h1>
+<table>
+<tr>
+    <td>用户：</td>
+    <td>{{ form.username }}</td>
+</tr>
+<tr>
+    <td>邮箱：</td>
+    <td>{{ form.email }}</td>
+</tr>
+<tr>
+    <td>姓：</td>
+    <td>{{ form.first_name }}</td>
+</tr>
+<tr>
+    <td>名：</td>
+    <td>{{ form.last_name }}</td>
+</tr>
+<tr>
+    <td>密码：</td>
+    <td>{{ form.password1 }}</td>
+</tr>
+<tr>
+    <td>重复密码：</td>
+    <td>{{ form.password2 }}</td>
+</tr>
+</table>
+			
+                      
+			<div>
+				<input type="submit" value="注册" />
+				<a href="/">回到主页</a>
+			</div>
+		</form><!-- form -->		
+	</section><!-- content -->
+</div><!-- container -->
+</body>
+</html>

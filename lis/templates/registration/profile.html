@@ -1,9 +1,41 @@
-Welcom, <b>{{ user }}</b>
-Please update your profile here
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6 ielt8"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7 ielt8"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>李家大院</title>
+<link rel="stylesheet" type="text/css" href="{% static "lis/css/accounts.css" %}" />
+</head>
+<body>
+<div class="container">
+	<section id="content">  
+<p>欢迎, <b>{{ user }}</b></p>
+<br/>
+<p>请在这里更新你的资料，这样可以让家族管理员知道你是谁</p>
+<br/>
+{% if user.first_name %}
+<p>你的名字 :{{ user.first_name }} &nbsp{{ user.last_name }}</p>
+{% endif %}
+<p>你的邮件: {{ user.email }}</p>              
 <form method="post" action="">
 {% csrf_token %}
-<p>Your full name :{{ user.first_name }} &nbsp{{ user.last_name }}</p>
-<p>Your email: {{ user.email }}</p>
-{{ profile_form.as_p }}
-<input type="submit" value="save" />
-</form>
+
+<br/>
+<br/>
+<br/>
+<div>
+
+    <p>个人简介：</p>
+    <p>{{ profile_form.self_desc }}</p>
+
+</div>
+<input type="submit" value="保存" />
+</form><!-- form -->		
+	</section><!-- content -->
+</div><!-- container -->
+</body>
+</html>

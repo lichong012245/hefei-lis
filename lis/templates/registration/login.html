@@ -1,25 +1,40 @@
-{% block content %}
-
-{% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %}
-
-<form method="post" action="{% url 'django.contrib.auth.views.login' %}">
-{% csrf_token %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6 ielt8"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7 ielt8"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>李家大院</title>
+<link rel="stylesheet" type="text/css" href="{% static "lis/css/accounts.css" %}" />
+</head>
+<body>
+<div class="container">
+	<section id="content">                
+		<form method="post" action="{% url 'django.contrib.auth.views.login' %}">
+                 {% csrf_token %}
+			<h1>登录</h1>
 <table>
 <tr>
-    <td>{{ form.username.label_tag }}</td>
+    <td>用户：</td>
     <td>{{ form.username }}</td>
 </tr>
 <tr>
-    <td>{{ form.password.label_tag }}</td>
+    <td>密码：</td>
     <td>{{ form.password }}</td>
 </tr>
 </table>
-
-<input type="submit" value="login" />
-<input type="hidden" name="next" value="{{ next }}" />
-<a href="{% url 'register' %}">Register</a>
-</form>
-
-{% endblock %}
+			
+                         {% if form.errors %}
+                   <p>用户名和密码不对</p>
+                 {% endif %}
+			<div>
+				<input type="submit" value="登陆" />				
+				<a href="{% url 'register' %}">注册</a>
+			</div>
+		</form><!-- form -->		
+	</section><!-- content -->
+</div><!-- container -->
+</body>
+</html>
