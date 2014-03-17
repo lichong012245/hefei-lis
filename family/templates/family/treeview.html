@@ -49,29 +49,28 @@ var to = false;
 <body>
 <div id="header">
 <div class="wrap">
-<h1>lee family</h>
+<h1>李家世系表</h>
 </div>
 </div>
+
 <div id="nav">
-<ul>
-<li><a href="{% url "index" %}">home</a></li>
-</ul>
-<div id="login">
+<p><a href="{% url "index" %}">返回主页</a></p>
+<p>
 {% if not user.is_anonymous %}
-	<p id="layoutdims">Welcome: <a href="{% url 'profile' %}">{{ user }}</a> | <a href="{% url 'logout' %}">Log Out</a></p>
+	<p id="layoutdims">欢迎： <a href="{% url 'profile' %}">{{ user }}</a> | <a href="{% url 'logout' %}">退出</a></p>
         {% else %}
 
-<p id="layoutdims">Please Register: <a href="{% url 'register' %}">here</a> | <a href="{% url 'login' %}">Log in</a></p>
+<p id="layoutdims">请注册： <a href="{% url 'register' %}">here</a> | <a href="{% url 'login' %}">登录</a></p>
         {% endif %}
-</div>
+</p>
 </div>
 
 <div id="sidebar">
-     <span id="position"></span>
+<p><label style="float:left; margin-left:15px;">查找：</label>
   
 <input type="text" id="jstree_div_q" value="" style="margin:0em auto 1em auto; display:block; padding:4px; border-radius:4px; border:1px solid silver;"/>
    
-
+</p>
 
 <div id="jstree_div">
 
@@ -89,15 +88,14 @@ var to = false;
         </li></ul>
     {% endfor %}
 {% endfor %}
+</div> 
 </div>
- 
-</div>
-<div id="main">
-<label>Name: </label><p id="name"></p>
-<label>Sex: </label><p id="sex"></p>
-<label>Desc: </label><p id="desc"></p>
-<label>branch: </label><p id="branch"></p>
 
+<div id="main">
+<label>姓名：</label><p id="name"></p>
+<label>性别： </label><p id="sex"></p>
+<label>介绍： </label><p id="desc"></p>
+<label>房：</label><p id="branch"></p>
 </div>
 
 
