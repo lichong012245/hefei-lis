@@ -20,6 +20,7 @@ COMPRESS_CSS_FILTERS =[
 
 SESSION_ENGINE=('django.contrib.sessions.backends.signed_cookies')
 
+LOGIN_REDIRECT_URL='/'
 
 MANAGERS = ADMINS
 if not DEBUG:
