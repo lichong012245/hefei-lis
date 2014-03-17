@@ -5,6 +5,7 @@ from PIL import Image
 from django.core.files.uploadedfile import SimpleUploadedFile
 import io
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
 
 
 class Member(MP_Node):
@@ -68,3 +69,14 @@ class postimage(models.Model):
                 temp_handle.read(), content_type='image/png')
         self.thumbnail.save(suf.name+'.png', suf, save=False)
         super(postimage,self).save()
+
+## send email when user is created
+
+def send_notification(sender,instance,created,**kwargs):
+   if created:
+            message = "有新用户注册：“ + instance.first_name + " " +instance.last_name +"    "+ r"www.hefei-lis.com/admin/auth/user/"+instance.pk
+            subject = instance.username+"刚刚注册，请查看“
+            send_email(subject,message,'noreply@hefei-lis.com','lishefei@gmail.com')
+
+post_save.connect(send_notification,sender=User)
+            

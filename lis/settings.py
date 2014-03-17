@@ -1,12 +1,27 @@
 # Django settings for lis project.
 
-DEBUG = True
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 DAJAXICE_MEDIA_PREFIX="dajaxice"
 
-import os
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+## Email backend
+if DEBUG:
+  EMAIL_BACKEND='django.core.mail.backends.filebased.EmailBackend'
+  EMAIL_FILE_PATH=os.path.join(BASE_DIR,'..','CACHE')
+
+if not DEBUG:
+  EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+  EMAIL_HOST = 'smtp.sendgrid.net'
+  EMAIL_HOST_USER= 'app22920819@heroku.com'
+  EMAIL_HOST_PASSWORD= 'qmbwbv5d'
+  EMAIL_PORT=587
+  EMAIL_USE_TLS= True
+  
+ 
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
