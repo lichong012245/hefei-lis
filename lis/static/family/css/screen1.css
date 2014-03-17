@@ -24,7 +24,7 @@ float:right;
    width:200px;
    float: left;
    position: absolute;
-   height:500px;
+   padding-bottom:70px;
    overflow-y: hidden;
 }
 .wrap{
