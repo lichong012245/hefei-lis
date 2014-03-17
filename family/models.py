@@ -6,6 +6,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 import io
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
+from django.db.models.signals import post_save
 
 
 class Member(MP_Node):
@@ -74,9 +75,9 @@ class postimage(models.Model):
 
 def send_notification(sender,instance,created,**kwargs):
    if created:
-            message = "有新用户注册：“ + instance.first_name + " " +instance.last_name +"    "+ r"www.hefei-lis.com/admin/auth/user/"+instance.pk
-            subject = instance.username+"刚刚注册，请查看“
-            send_email(subject,message,'noreply@hefei-lis.com','lishefei@gmail.com')
+            message = u"有新用户注册："+ instance.first_name + instance.last_name +"    "+ r"www.hefei-lis.com/admin/auth/user/"+str(instance.pk)
+            subject = instance.username+u"刚刚注册，请查看"
+            send_mail(subject,message,'noreply@hefei-lis.com',['lishefei@gmail.com'],fail_silently=False)
 
 post_save.connect(send_notification,sender=User)
             
