@@ -9,36 +9,35 @@
 			<div class="main">
 				<h1>联系我们</h1>
 				<form action="" method="post">
-                                    {% csrf_token %}
-{{  form.non_field_errors }}
 					<ul>
 						<li>
 							<label>请在这里输入你的全名</label>
-                                                        {{ form.sender.errors}}
-							{{ form.sender }}
+							<input type="text" id="name" value="Full Name" onBlur="javascript:if(this.value==''){this.value=this.defaultValue;}" onFocus="javascript:if(this.value==this.defaultValue){this.value='';}">
 						</li>
 						<li>
 							<label>请在这里输入你的邮箱地址</label>
-                                                          {{ form.email.errors}}
-							{{ form.email }}
+							<input type="text" id="email" value="Email Address" onBlur="javascript:if(this.value==''){this.value=this.defaultValue;}" onFocus="javascript:if(this.value==this.defaultValue){this.value='';}">
 						</li>
 						<li>
 							<label>请在这里输入主题</label>
- {{ form.subject.errors}}							
-{{ form.subject }}
+							<input type="text" id="subject" value="Subject" onBlur="javascript:if(this.value==''){this.value=this.defaultValue;}" onFocus="javascript:if(this.value==this.defaultValue){this.value='';}">
 						</li>
 						<li>
 							<label class="msg">请在这里输入内容</label>
- {{ form.message.errors}}
-							{{ form.message }}
-							
+							<textarea id="message" onBlur="javascript:if(this.value==''){this.value=this.defaultValue;}" onFocus="javascript:if(this.value==this.defaultValue){this.value='';}">Message</textarea>
+							<div class="checkbox">
+								<label for="terms">
+									<input type="checkbox" id="terms">
+									同意家族管理员联系我</label>
+								<br>
+								<label for="subscribe">
+									<input type="checkbox" id="subscribe">
+									同意接受家族集体邮件</label>
+							</div>
 							<input type="submit" value="发送" class="btn3">
 						</li>
 					</ul>
- 
 				</form>
-                           
-                                
 			</div>
 		</div>
 	</div>
