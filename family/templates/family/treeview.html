@@ -49,7 +49,7 @@ var to = false;
 <body>
 <div id="header">
 <div class="wrap">
-<h1>李家世系表</h>
+<h1>李氏宗族世系表</h>
 </div>
 </div>
 
@@ -60,7 +60,7 @@ var to = false;
 	<p id="layoutdims">欢迎： <a href="{% url 'profile' %}">{{ user }}</a> | <a href="{% url 'logout' %}">退出</a></p>
         {% else %}
 
-<p id="layoutdims">请注册： <a href="{% url 'register' %}">here</a> | <a href="{% url 'login' %}">登录</a></p>
+<a href="{% url 'register' %}">注册</a> | <a href="{% url 'login' %}">登录</a></p>
         {% endif %}
 </p>
 </div>
