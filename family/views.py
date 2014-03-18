@@ -7,6 +7,9 @@ from django.views.generic.detail import BaseDetailView, SingleObjectTemplateResp
 from django.core import serializers
 
 
+class ContactView(TemplateView):
+     template_name = "family/contactview.html"      
+
 class JSONResponseMixin(object):
     def render_to_response(self, context):
         return self.get_json_response(self.convert_context_to_json(context))

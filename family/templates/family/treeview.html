@@ -54,6 +54,7 @@ var to = false;
 </div>
 
 <div id="nav">
+<div id="link">
 <p><a href="{% url "index" %}">返回主页</a></p>
 <p>
 {% if not user.is_anonymous %}
@@ -63,6 +64,7 @@ var to = false;
 <a href="{% url 'register' %}">注册</a> | <a href="{% url 'login' %}">登录</a></p>
         {% endif %}
 </p>
+</div>
 </div>
 
 <div id="sidebar">
