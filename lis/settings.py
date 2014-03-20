@@ -179,6 +179,7 @@ INSTALLED_APPS = (
      'dajaxice',
      'dajax',
      'compressor',
+     'storages',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
      
@@ -222,6 +223,9 @@ TEMPLATE_CONTEXT_PROCESSORS=("django.contrib.auth.context_processors.auth",
 "django.contrib.messages.context_processors.messages",
 "django.core.context_processors.request",)
 
+
+
+
 if not DEBUG:
 # Parse database configuration from $DATABASE_URL
  import dj_database_url
@@ -242,4 +246,13 @@ if not DEBUG:
  STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
  )
+
+
+## Amazon S3 Settings
+if not DEBUG:
+    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+    STATIC_URL = S3_URL
+
 
