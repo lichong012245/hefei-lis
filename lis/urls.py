@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     url(r'^family/', include('family.urls')),
     url(r'^accounts/register/$', CreateView.as_view(template_name='registration/register.html',form_class=UserCreateForm,success_url='/'),name='register'),
     url(r'^accounts/profile/$', UserProfile,name='profile'),
+    url(r'^accounts/logout/$','django.contrib.auth.views.logout',{'next_page':'/'}),
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^contact/$', Contact, name='contact'),
   

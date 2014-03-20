@@ -1,5 +1,7 @@
-from family.models import Member
+from family.models import Member, UserProfile
+from django.contrib.auth.models import User
 from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
 from django.views.generic.base import TemplateView
 import simplejson
 from django.http import HttpResponse
@@ -7,8 +9,15 @@ from django.views.generic.detail import BaseDetailView, SingleObjectTemplateResp
 from django.core import serializers
 
 
-class ContactView(TemplateView):
-     template_name = "family/contactview.html"      
+
+
+class ContactView(ListView):
+     model = Member
+     template_name = "family/contactview.html"        
+     def get_queryset(self):
+          qs = self.model.objects.filter(branch=self.request.user.userprofile.branch)
+          return qs
+        
 
 class JSONResponseMixin(object):
     def render_to_response(self, context):

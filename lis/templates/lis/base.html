@@ -31,6 +31,14 @@
 				<li>
 					<a href="/contact/">联系我们</a>
 				</li>
+                                <li>
+					 {% if not user.is_anonymous %}
+	欢迎: <a href="{% url 'profile' %}">{{ user }}</a> | <a href="{% url 'logout' %}">退出</a>
+        {% else %}
+
+<a>你还未登录</a>
+        {% endif %}
+				</li>
 			</ul>
 		</div>
 	</div>
