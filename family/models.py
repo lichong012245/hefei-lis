@@ -20,7 +20,7 @@ class Member(MP_Node):
 ('3',u'老三房'),
 ('4',u'老四房'),
 ('5',u'老五房'),
-('5',u'老六房'),
+('6',u'老六房'),
 )
    name = models.CharField(max_length=100)   
    date_of_birth = models.DateField(blank=True)
@@ -42,7 +42,7 @@ class UserProfile(models.Model):
 ('3',u'三房'),
 ('4',u'四房'),
 ('5',u'五房'),
-('5',u'六房'),
+('6',u'六房'),
 )
   user=models.OneToOneField(User)
   member=models.OneToOneField(Member,blank=True,null=True)
