@@ -1,0 +1,22 @@
+{% extends 'lis/base.html' %}
+
+{% block body %}
+	<div id="contents">
+		<div class="wrapper clearfix">
+	
+			<div class="main">
+				<h1>家族同房联系录</h1>
+				
+                                      {% for member in object_list %}
+                                        <p> {{ member.name }} : &nbsp&nbsp{{ member.phone }}&nbsp&nbsp|&nbsp&nbsp{{ member.address }} </p>
+{% endfor %}
+					
+				
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<ul id="featured" class="wrapper clearfix">
+			用户只能看到本房同族人的联系方式，如果想知道其他房的联系方式，请联系管理员。谢谢合作。
+		</ul>
+		{% endblock %}

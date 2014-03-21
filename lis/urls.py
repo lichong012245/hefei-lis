@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     url(r'^family/', include('family.urls')),
     url(r'^accounts/register/$', CreateView.as_view(template_name='registration/register.html',form_class=UserCreateForm,success_url='/'),name='register'),
     url(r'^accounts/profile/$', UserProfile,name='profile'),
+    url(r'^accounts/logout/$','django.contrib.auth.views.logout',{'next_page':'/'}),
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^contact/$', Contact, name='contact'),
   
@@ -25,4 +26,5 @@ urlpatterns = patterns('',
     (r'^%s/' % settings.DAJAXICE_MEDIA_PREFIX, include('dajaxice.urls')),
    
      url(r'^admin/', include(admin.site.urls)),
-)+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+)+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

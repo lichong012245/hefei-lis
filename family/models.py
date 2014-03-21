@@ -3,8 +3,10 @@ from django.db import models
 from treebeard.mp_tree import MP_Node
 from PIL import Image
 from django.core.files.uploadedfile import SimpleUploadedFile
-import io
+import io, os
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
+from django.db.models.signals import post_save
 
 
 class Member(MP_Node):
@@ -13,12 +15,12 @@ class Member(MP_Node):
 ('F',u'女'),
 )
    tree_branch=(
-('1',u'一房'),
-('2',u'二房'),
-('3',u'三房'),
-('4',u'四房'),
-('5',u'五房'),
-('5',u'六房'),
+('1',u'老一房'),
+('2',u'老二房'),
+('3',u'老三房'),
+('4',u'老四房'),
+('5',u'老五房'),
+('6',u'老六房'),
 )
    name = models.CharField(max_length=100)   
    date_of_birth = models.DateField(blank=True)
@@ -26,6 +28,7 @@ class Member(MP_Node):
    desc=models.TextField(blank=True)
    phone = models.CharField(max_length=100,blank=True,null=True)
    address = models.CharField(max_length=5000,blank=True,null=True)
+   email = models.EmailField(blank=True,null=True)
    branch=models.CharField(choices=tree_branch,max_length=10,blank=True)   
 
    
@@ -39,7 +42,7 @@ class UserProfile(models.Model):
 ('3',u'三房'),
 ('4',u'四房'),
 ('5',u'五房'),
-('5',u'六房'),
+('6',u'六房'),
 )
   user=models.OneToOneField(User)
   member=models.OneToOneField(Member,blank=True,null=True)
@@ -68,3 +71,14 @@ class postimage(models.Model):
                 temp_handle.read(), content_type='image/png')
         self.thumbnail.save(suf.name+'.png', suf, save=False)
         super(postimage,self).save()
+
+## send email when user is created
+
+def send_notification(sender,instance,created,**kwargs):
+   if created:
+            message = u"有新用户注册："+ instance.first_name + instance.last_name +"    "+ r"www.hefei-lis.com/admin/auth/user/"+str(instance.pk)
+            subject = instance.username+u"刚刚注册，请查看"
+            send_mail(subject,message,'noreply@hefei-lis.com',['lishefei@gmail.com'],fail_silently=False)
+
+post_save.connect(send_notification,sender=User)
+            

@@ -1,4 +1,7 @@
 <h1>{{ object.name }}</h1>
+{% for image in object.postimage_set.all %}
+<img src={{ image.thumbnail.url }}></img>
+{% endfor %}
 <p>{{ object.sex }}</p>
 <p>{{ object.date_of_birth }}</p>
 <p>{{ object.desc }}</p>

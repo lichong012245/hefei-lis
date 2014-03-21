@@ -1,12 +1,27 @@
 # Django settings for lis project.
 
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 DAJAXICE_MEDIA_PREFIX="dajaxice"
 
-import os
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+## Email backend
+if DEBUG:
+  EMAIL_BACKEND='django.core.mail.backends.filebased.EmailBackend'
+  EMAIL_FILE_PATH=os.path.join(BASE_DIR,'..','CACHE')
+
+if not DEBUG:
+  EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+  EMAIL_HOST = 'smtp.sendgrid.net'
+  EMAIL_HOST_USER= 'app22920819@heroku.com'
+  EMAIL_HOST_PASSWORD= 'qmbwbv5d'
+  EMAIL_PORT=587
+  EMAIL_USE_TLS= True
+  
+ 
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -83,12 +98,12 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = '/media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -164,6 +179,7 @@ INSTALLED_APPS = (
      'dajaxice',
      'dajax',
      'compressor',
+     'storages',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
      
@@ -207,6 +223,9 @@ TEMPLATE_CONTEXT_PROCESSORS=("django.contrib.auth.context_processors.auth",
 "django.contrib.messages.context_processors.messages",
 "django.core.context_processors.request",)
 
+
+
+
 if not DEBUG:
 # Parse database configuration from $DATABASE_URL
  import dj_database_url
@@ -227,4 +246,13 @@ if not DEBUG:
  STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
  )
+
+
+## Amazon S3 Settings
+if not DEBUG:
+    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+    STATIC_URL = S3_URL
+
 
