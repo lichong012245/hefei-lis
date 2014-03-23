@@ -165,6 +165,11 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
+if not DEBUG:
+   storage = ('storages',)
+else:
+   storage=()
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -179,11 +184,12 @@ INSTALLED_APPS = (
      'dajaxice',
      'dajax',
      'compressor',
-     'storages',
+     
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
      
-)
+)+ storage
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

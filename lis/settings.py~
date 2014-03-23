@@ -1,12 +1,27 @@
 # Django settings for lis project.
 
-DEBUG = False
-TEMPLATE_DEBUG = False
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+DEBUG = True
+TEMPLATE_DEBUG = DEBUG
 
 DAJAXICE_MEDIA_PREFIX="dajaxice"
 
-import os
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+## Email backend
+if DEBUG:
+  EMAIL_BACKEND='django.core.mail.backends.filebased.EmailBackend'
+  EMAIL_FILE_PATH=os.path.join(BASE_DIR,'..','CACHE')
+
+if not DEBUG:
+  EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+  EMAIL_HOST = 'smtp.sendgrid.net'
+  EMAIL_HOST_USER= 'app22920819@heroku.com'
+  EMAIL_HOST_PASSWORD= 'qmbwbv5d'
+  EMAIL_PORT=587
+  EMAIL_USE_TLS= True
+  
+ 
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -20,20 +35,34 @@ COMPRESS_CSS_FILTERS =[
 
 SESSION_ENGINE=('django.contrib.sessions.backends.signed_cookies')
 
+LOGIN_REDIRECT_URL='/'
 
 MANAGERS = ADMINS
-
-DATABASES = {
+if not DEBUG:
+ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
          'NAME':  '', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        #'NAME':  'test_database.sqlite3',                      # Or path to database file if using sqlite3.
+                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
-}
+ }
+
+if DEBUG:
+ DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+         # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+         'NAME':  'test_database.sqlite3',                      # Or path to database file if using sqlite3.
+        'USER': '',                      # Not used with sqlite3.
+        'PASSWORD': '',                  # Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+    }
+ }
 
 
 
@@ -69,12 +98,12 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = '/media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -136,6 +165,9 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
+if not DEBUG:
+   storage = ('storages',)
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -150,10 +182,12 @@ INSTALLED_APPS = (
      'dajaxice',
      'dajax',
      'compressor',
+     
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
      
-)
+)+ storage
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
@@ -195,22 +229,34 @@ TEMPLATE_CONTEXT_PROCESSORS=("django.contrib.auth.context_processors.auth",
 
 
 
+
+if not DEBUG:
 # Parse database configuration from $DATABASE_URL
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
+ import dj_database_url
+ DATABASES['default'] =  dj_database_url.config()
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Allow all host headers
-ALLOWED_HOSTS = ['*']
+ ALLOWED_HOSTS = ['*']
 
 # Static asset configuration
-import os
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = 'staticfiles'
-STATIC_URL = '/static/'
+ import os
+ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ STATIC_ROOT = 'staticfiles'
+ STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
+ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
-)
+ )
+
+
+## Amazon S3 Settings
+if not DEBUG:
+    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+    STATIC_URL = S3_URL
+
+

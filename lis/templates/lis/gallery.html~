@@ -1,149 +1,41 @@
 {% extends 'lis/base.html' %}
 {% block body %}
+{% load staticfiles %}
 	<div id="contents">
 		<div id="gallery" class="wrapper clearfix">
 			<div id="sidebar">
 				<ul>
 					<li>
-						<a href="blog.html"><img src="images/earth-small.jpg" alt="Img" height="154" width="213"></a>
+						<img src="{% static "lis/images/lhz/9.JPG" %}" alt="Img" height="154" width="213">
+<p>李鸿章访德国纪念币：李鸿章（正面）</p>
 					</li>
 					<li>
-						<a href="blog.html"><img src="images/spaceshuttle-closeup.jpg" alt="Img" height="154" width="213"></a>
+						<img src="{% static "lis/images/lhz/10.JPG" %}" alt="Img" height="154" width="213"><p>李鸿章访德国纪念章：俾斯麦（反面）</p>
 					</li>
 				</ul>
 				<div class="click-here">
-					<h1>Lorem Ipsum Dolor!</h1>
-					<a href="index.html" class="btn1">Click Here!</a>
+					<h1>更多家族照片</h1>
+					<a href="#" class="btn1">请点击这里</a>
 				</div>
 			</div>
 			<div class="main">
-				<h1>Gallery</h1>
+				<h1>家族相册</h1>
 				<div class="photos">
 					<div class="viewer">
-						<img src="images/astronaut-large.jpg" alt="Img" height="348" width="703">
+						<img src="{% static "lis/images/lhz/6.JPG" %}" alt="Img" height="512" width="683"><p>李鸿章出使欧美两儿陪同（左一李经述，左二李经方)</p>
 					</div>
-					<ul>
-						<li>
-							<a href="gallery.html"><img src="images/thumbnail-astronaut.jpg" alt="Img" height="96" width="150"><span class="cover"></span></a>
-						</li>
-						<li>
-							<a href="gallery.html"><img src="images/thumbnail-spacecraft.jpg" alt="Img" height="96" width="150"><span class="cover"></span></a>
-						</li>
-						<li>
-							<a href="gallery.html"><img src="images/thumbnail-earth.jpg" alt="Img" height="96" width="150"><span class="cover"></span></a>
-						</li>
-						<li>
-							<a href="gallery.html"><img src="images/thumbnail-craft.jpg" alt="Img" height="96" width="150"><span class="cover"></span></a>
-						</li>
-					</ul>
+<div class="viewer">
+						<img src="{% static "lis/images/lhz/7.JPG" %}" alt="Img" height="683" width="512">
+					</div>
+<div class="viewer">
+						<img src="{% static "lis/images/lhz/5.JPG" %}" alt="Img" height="512" width="683"><p>老年李鸿章在国外</p>
+					</div>
+					
 				</div>
-				<ul class="pagination">
-					<li>
-						<a href="gallery.html">&lt;&lt;</a>
-					</li>
-					<li>
-						<a href="gallery.html">First</a>
-					</li>
-					<li class="selected">
-						<a href="gallery.html">1</a>
-					</li>
-					<li>
-						<a href="gallery.html">2</a>
-					</li>
-					<li>
-						<a href="gallery.html">3</a>
-					</li>
-					<li>
-						<a href="gallery.html">4</a>
-					</li>
-					<li>
-						<a href="gallery.html">5</a>
-					</li>
-					<li>
-						<a href="gallery.html">6</a>
-					</li>
-					<li>
-						<a href="gallery.html">7</a>
-					</li>
-					<li>
-						<a href="gallery.html">8</a>
-					</li>
-					<li>
-						<a href="gallery.html">9</a>
-					</li>
-					<li>
-						<a href="gallery.html">10</a>
-					</li>
-					<li>
-						<a href="gallery.html">11</a>
-					</li>
-					<li>
-						<a href="gallery.html">12</a>
-					</li>
-					<li>
-						<a href="gallery.html">13</a>
-					</li>
-					<li>
-						<a href="gallery.html">14</a>
-					</li>
-					<li>
-						<a href="gallery.html">15</a>
-					</li>
-					<li>
-						<a href="gallery.html">16</a>
-					</li>
-					<li>
-						<a href="gallery.html">17</a>
-					</li>
-					<li>
-						<a href="gallery.html">18</a>
-					</li>
-					<li>
-						<a href="gallery.html">19</a>
-					</li>
-					<li>
-						<a href="gallery.html">20</a>
-					</li>
-					<li>
-						<a href="gallery.html">Last</a>
-					</li>
-					<li>
-						<a href="gallery.html">&gt;&gt;</a>
-					</li>
-				</ul>
-				<!-- /.pagination -->
+				
+				
 			</div>
 		</div>
 	</div>
-	<div id="footer">
-		<ul id="featured" class="wrapper clearfix">
-			<li>
-				<img src="images/astronaut.jpg" alt="Img" height="204" width="220">
-				<h3><a href="blog.html">Category 1</a></h3>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec mi tortor. Phasellus commodo semper vehicula.
-				</p>
-			</li>
-			<li>
-				<img src="images/earth.jpg" alt="Img" height="204" width="220">
-				<h3><a href="blog.html">Category 2</a></h3>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec mi tortor. Phasellus commodo semper vehicula.
-				</p>
-			</li>
-			<li>
-				<img src="images/spacecraft-small.jpg" alt="Img" height="204" width="220">
-				<h3><a href="blog.html">Category 3</a></h3>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec mi tortor. Phasellus commodo semper vehicula.
-				</p>
-			</li>
-			<li>
-				<img src="images/space-shuttle.jpg" alt="Img" height="204" width="220">
-				<h3><a href="blog.html">Category 4</a></h3>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec mi tortor. Phasellus commodo semper vehicula.
-				</p>
-			</li>
-		</ul>
+	
 		{% endblock %}
