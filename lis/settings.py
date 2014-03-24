@@ -256,8 +256,11 @@ if not DEBUG:
 
 ## Amazon S3 Settings
 if not DEBUG:
-    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    AWS_ACCESS_KEY_ID = 'AKIAJ25QNGITHFPBTFXA'
+    AWS_SECRET_ACCESS_KEY = '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'
+    AWS_STORAGE_BUCKET_NAME = 'lishefei'
     S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
     STATIC_URL = S3_URL
 
