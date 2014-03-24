@@ -37,12 +37,12 @@ class Member(MP_Node):
 
 class UserProfile(models.Model):
   tree_branch=(
-('1',u'一房'),
-('2',u'二房'),
-('3',u'三房'),
-('4',u'四房'),
-('5',u'五房'),
-('6',u'六房'),
+('1',u'老一房'),
+('2',u'老二房'),
+('3',u'老三房'),
+('4',u'老四房'),
+('5',u'老五房'),
+('6',u'老六房'),
 )
   user=models.OneToOneField(User)
   member=models.OneToOneField(Member,blank=True,null=True)
