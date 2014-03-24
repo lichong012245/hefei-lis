@@ -6,11 +6,13 @@
 	
 			<div class="main">
 				<h1>家族同房联系录</h1>
-				
+				 {% if object_list %}
                                       {% for member in object_list %}
-                                        <p> {{ member.name }} : &nbsp&nbsp{{ member.phone }}&nbsp&nbsp|&nbsp&nbsp{{ member.address }} </p>
+                                        <p> {{ member.name }} : &nbsp&nbsp{{ member.phone }}&nbsp&nbsp|&nbsp&nbsp{{ member.email }}&nbsp&nbsp|&nbsp&nbsp{{ member.address }} </p>
 {% endfor %}
-					
+				{% else %}
+                                        <p>你还没有被管理员确认身份，所以暂时无法看到联系录，请联系管理员。</p>
+                            {% endif %}	
 				
 			</div>
 		</div>

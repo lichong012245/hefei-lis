@@ -13,10 +13,13 @@ from django.core import serializers
 
 class ContactView(ListView):
      model = Member
-     template_name = "family/contactview.html"        
+     template_name = "family/contactview.html"          
      def get_queryset(self):
-          qs = self.model.objects.filter(branch=self.request.user.userprofile.branch)
-          return qs
+          if hasattr(self,'userprofile'): 
+               if self.request.user.userprofile.branch:
+                  qs = self.model.objects.filter(branch=self.request.user.userprofile.branch)
+               return qs
+          return None
         
 
 class JSONResponseMixin(object):
