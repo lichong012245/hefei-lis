@@ -269,5 +269,5 @@ if not DEBUG:
 if not DEBUG:
   COMPRESS_URL='http://lishefei.s3.amazonaws.com/'
   STATIC_URL=COMPRESS_URL
-  COMPRESS_STORAGE='lis.CachedS3BotoStorage'
+  COMPRESS_STORAGE='lis.CachedS3BotoStorage.CachedS3BotoStorage'
   STATICFILES_STORAGE = COMPRESS_STORAGE
