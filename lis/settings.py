@@ -3,7 +3,7 @@
 import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 DAJAXICE_MEDIA_PREFIX="dajaxice"
@@ -28,6 +28,7 @@ ADMINS = (
 )
 ## Django static compressor settings
 COMPRESS_ENABLED = True
+COMPRESS_OFFLINE = True
 COMPRESS_CSS_FILTERS =[
 'compressor.filters.template.TemplateFilter',
 'compressor.filters.css_default.CssAbsoluteFilter',
