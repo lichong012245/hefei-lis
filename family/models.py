@@ -15,12 +15,12 @@ class Member(MP_Node):
 ('F',u'女'),
 )
    tree_branch=(
-('1',u'老一房'),
-('2',u'老二房'),
-('3',u'老三房'),
-('4',u'老四房'),
-('5',u'老五房'),
-('6',u'老六房'),
+('1',u'翰章支系'),
+('2',u'鸿章支系'),
+('3',u'鹤章支系'),
+('4',u'蕴章支系'),
+('5',u'凤章支系'),
+('6',u'昭庆支系'),
 )
    name = models.CharField(max_length=100)   
    date_of_birth = models.DateField(blank=True)
@@ -37,12 +37,12 @@ class Member(MP_Node):
 
 class UserProfile(models.Model):
   tree_branch=(
-('1',u'老一房'),
-('2',u'老二房'),
-('3',u'老三房'),
-('4',u'老四房'),
-('5',u'老五房'),
-('6',u'老六房'),
+('1',u'翰章支系'),
+('2',u'鸿章支系'),
+('3',u'鹤章支系'),
+('4',u'蕴章支系'),
+('5',u'凤章支系'),
+('6',u'昭庆支系'),
 )
   user=models.OneToOneField(User)
   member=models.OneToOneField(Member,blank=True,null=True)

@@ -23,6 +23,5 @@ def get_member(req, pk):
     dajax.assign('#image', 'src', get_first_thumbnail_of_member(p))
     dajax.assign('#name', 'innerHTML', p.name)
     dajax.assign('#sex', 'innerHTML', show_sex_in_chinese(p.sex))    
-    dajax.assign('#desc', 'innerHTML', linebreaksbr(p.desc))    
-    dajax.assign('#branch', 'innerHTML', p.branch)    
+    dajax.assign('#desc', 'innerHTML', linebreaksbr(p.desc))         
     return dajax.json()
