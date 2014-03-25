@@ -265,6 +265,10 @@ if not DEBUG:
     #S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
    # STATIC_URL = S3_URL
     AWS_QUERYSTRING_AUTH = False
+    AWS_HEADERS = {
+    'Expires': 'Thu, 15 Apr 2020 20:00:00 GMT',
+    'Cache-Control': 'max-age=86400',
+}
 
 ## Django compressor for S3 Settings
 if not DEBUG:
