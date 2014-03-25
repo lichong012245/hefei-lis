@@ -263,5 +263,11 @@ if not DEBUG:
     AWS_STORAGE_BUCKET_NAME = 'lishefei'
     S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
     STATIC_URL = S3_URL
+    AWS_QUERYSTRING_AUTH = False
 
-
+## Django compressor for S3 Settings
+if not DEBUG:
+  COMPRESS_URL='http://lishefei.s3.amazonaws.com/'
+  STATIC_URL=COMPRESS_URL
+  COMPRESS_STORAGE='lis.CachedS3BotoStorage'
+  STATICFILES_STORAGE = COMPRESS_STORAGE
