@@ -34,7 +34,7 @@ nosetests.xml
 .project
 .pydevproject
 
-CACHE/
-migrations/
+
+
 dev.py
 media/
