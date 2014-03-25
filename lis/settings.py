@@ -16,8 +16,8 @@ if DEBUG:
 if not DEBUG:
   EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
   EMAIL_HOST = 'smtp.sendgrid.net'
-  EMAIL_HOST_USER= 'app22920819@heroku.com'
-  EMAIL_HOST_PASSWORD= 'qmbwbv5d'
+  EMAIL_HOST_USER= 'app23243885@heroku.com'
+  EMAIL_HOST_PASSWORD= 'bo1fgmef'
   EMAIL_PORT=587
   EMAIL_USE_TLS= True
   
@@ -109,11 +109,11 @@ MEDIA_URL = '/media/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
+#STATIC_ROOT = ''
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = '/static/'
+#STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -244,10 +244,10 @@ if not DEBUG:
  ALLOWED_HOSTS = ['*']
 
 # Static asset configuration
- import os
- BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ #import os
+ #BASE_DIR = os.path.dirname(os.path.abspath(__file__))
  STATIC_ROOT = 'staticfiles'
- STATIC_URL = '/static/'
+ #STATIC_URL = '/static/'
 
  STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
@@ -257,17 +257,19 @@ if not DEBUG:
 ## Amazon S3 Settings
 if not DEBUG:
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    #STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     AWS_ACCESS_KEY_ID = 'AKIAJ25QNGITHFPBTFXA'
     AWS_SECRET_ACCESS_KEY = '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'
     AWS_STORAGE_BUCKET_NAME = 'lishefei'
-    S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
-    STATIC_URL = S3_URL
+    #S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+   # STATIC_URL = S3_URL
     AWS_QUERYSTRING_AUTH = False
 
 ## Django compressor for S3 Settings
 if not DEBUG:
-  COMPRESS_URL='http://lishefei.s3.amazonaws.com/'
+  COMPRESS_URL='http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
   STATIC_URL=COMPRESS_URL
-  COMPRESS_STORAGE='lis.CachedS3BotoStorage.CachedS3BotoStorage'
+  COMPRESS_STORAGE='Storage.CachedS3BotoStorage'
   STATICFILES_STORAGE = COMPRESS_STORAGE
+  COMPRESS_ROOT = STATIC_ROOT
+
