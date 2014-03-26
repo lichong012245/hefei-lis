@@ -7,6 +7,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django import forms
 from django.core.mail import send_mail
+from django.core.urlresolvers import reverse
 
 
 class ContactForm(forms.Form):
@@ -31,7 +32,7 @@ def Contact(request):
               message = form.cleaned_data['message']
               email = form.cleaned_data['email']
               send_email(subject,message,sender,['lishefei@gmail.com'])
-              return HttpResponseRedirect('/')  
+              return HttpResponseRedirect(reverse('index'))  
       else:
               form = ContactForm()
       return render(request, 'lis/contact.html',{'form':form})
