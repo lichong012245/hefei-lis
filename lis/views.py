@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from family.forms import UserProfileForm
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
@@ -31,8 +31,8 @@ def Contact(request):
               sender = form.cleaned_data['sender']
               message = form.cleaned_data['message']
               email = form.cleaned_data['email']
-              send_email(subject,message,sender,['lishefei@gmail.com'])
-              return HttpResponseRedirect(reverse('index'))  
+              send_email(subject,message,sender,['lishefei@gmail.com'],fail_silently=False)
+              return redirect(reverse('index'))  
       else:
               form = ContactForm()
       return render(request, 'lis/contact.html',{'form':form})
