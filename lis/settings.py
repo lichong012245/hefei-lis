@@ -28,7 +28,7 @@ ADMINS = (
 )
 ## Django static compressor settings
 COMPRESS_ENABLED = True
-#COMPRESS_OFFLINE = True
+COMPRESS_OFFLINE = True
 COMPRESS_CSS_FILTERS =[
 'compressor.filters.template.TemplateFilter',
 'compressor.filters.css_default.CssAbsoluteFilter',
