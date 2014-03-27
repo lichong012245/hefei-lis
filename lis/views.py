@@ -12,7 +12,7 @@ from django.core.urlresolvers import reverse
 
 class ContactForm(forms.Form):
     sender = forms.CharField(max_length=100,widget=forms.TextInput(attrs={'id':'sender'}))
-    subject = forms.CharField(max_length=100,widget=forms.TextInput(attrs={'id':'sbuject'}))
+    subject = forms.CharField(max_length=100,widget=forms.TextInput(attrs={'id':'subject'}))
     email = forms.EmailField(widget=forms.TextInput(attrs={'id':'email'}))
     message=forms.CharField(widget=forms.Textarea(attrs={'id':'message'}))
 
@@ -31,8 +31,8 @@ def Contact(request):
               sender = form.cleaned_data['sender']
               message = form.cleaned_data['message']
               email = form.cleaned_data['email']
-              send_email(subject,message,sender,['lishefei@gmail.com'],fail_silently=False)
-              return redirect('index')  
+              send_email(subject,message,sender+'<'+email+'>',['lishefei@gmail.com'],fail_silently=False)
+              return HttpResponseRedirect('/')  
       else:
               form = ContactForm()
       return render(request, 'lis/contact.html',{'form':form})
