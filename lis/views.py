@@ -31,8 +31,8 @@ def Contact(request):
               sender = form.cleaned_data['sender']
               message = form.cleaned_data['message']
               email = form.cleaned_data['email']
-              send_email(subject,message,sender+'<'+email+'>',['lishefei@gmail.com'],fail_silently=False)
-              return HttpResponseRedirect('/')  
+              send_mail(subject,message,sender+'<'+email+'>',['lishefei@gmail.com'],fail_silently=False)
+              return redirect('index')  
       else:
               form = ContactForm()
       return render(request, 'lis/contact.html',{'form':form})
