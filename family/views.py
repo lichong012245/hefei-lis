@@ -40,8 +40,8 @@ class TreeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(TreeView, self).get_context_data(**kwargs)        
         context['tree'] = Member.get_annotated_list()
-        context['member']=Member.objects.get(pk=1)
-        context['member_img']=list(Member.objects.get(pk=1).postimage_set.all()[:1])[0].thumbnail.url
+        context['member']=Member.objects.all()[0]
+        context['member_img']=list(Member.objects.all()[0].postimage_set.all()[:1])[0].thumbnail.url
         return context
 
 class HybridDetailView(JSONResponseMixin, SingleObjectTemplateResponseMixin, BaseDetailView):
