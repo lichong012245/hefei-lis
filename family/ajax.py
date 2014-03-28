@@ -14,7 +14,7 @@ def get_first_thumbnail_of_member(object):
            r=list(object.postimage_set.all()[:1])
            if r:
                 return r[0].thumbnail.url
-           return None
+           return 'https://lishefei.s3.amazonaws.com/lis/images/lhz/placeholder.png'
 
 @dajaxice_register
 def get_member(req, pk):

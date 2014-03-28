@@ -11,12 +11,10 @@ class UserCreateForm(UserCreationForm):
              model = User
              fields = ('username','email','first_name','last_name')
 
-class UserFormForFront(forms.ModelForm):
-   
+class UserFormForFront(forms.ModelForm):   
 
    class Meta:
-         model= User
-         
+         model= User        
 
 
 class UserForm(forms.ModelForm):
@@ -27,13 +25,13 @@ class UserForm(forms.ModelForm):
 
 
 class UserProfileAdminForm(forms.ModelForm):
-    self_desc = forms.CharField(widget=forms.Textarea)
+   # self_desc = forms.CharField(widget=forms.Textarea)
     class Meta:
             model = UserProfile
             
 
 class UserProfileForm(forms.ModelForm):
-    self_desc = forms.CharField(widget=forms.Textarea)
+   # self_desc = forms.CharField(widget=forms.Textarea)
     class Meta:
             model = UserProfile
             fields=('self_desc',)

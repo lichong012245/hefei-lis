@@ -8,6 +8,7 @@ from django.http import HttpResponseRedirect
 from django import forms
 from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
 
 
 class ContactForm(forms.Form):
@@ -37,6 +38,7 @@ def Contact(request):
               form = ContactForm()
       return render(request, 'lis/contact.html',{'form':form})
 
+
 def UserProfile(request):      
       if request.method == 'POST':           
            profile_form = UserProfileForm(data=request.POST)
@@ -44,7 +46,7 @@ def UserProfile(request):
                profile = profile_form.save(commit=False)
                profile.user=request.user
                profile.save()
-               return HttpResponseRedirect(reverse('index'))
-      else:  
-               profile_form=  UserProfileForm()                
+               return redirect('index')
+      else:              
+             profile_form=  UserProfileForm()                
       return render(request, 'registration/profile.html',{'profile_form':profile_form})

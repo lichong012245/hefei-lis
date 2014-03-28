@@ -48,6 +48,9 @@ class UserProfile(models.Model):
   member=models.OneToOneField(Member,blank=True,null=True)
   self_desc=models.TextField(blank=True)
   branch=models.CharField(choices=tree_branch,max_length=10,blank=True)
+
+  def __unicode__(self):
+     return self.user.username
   
  
 class postimage(models.Model):
