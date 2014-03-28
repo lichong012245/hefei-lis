@@ -15,7 +15,7 @@ class Member(MP_Node):
 ('F',u'女'),
 )
    tree_branch=(
-('1',u'翰章支系'),
+('1',u'瀚章支系'),
 ('2',u'鸿章支系'),
 ('3',u'鹤章支系'),
 ('4',u'蕴章支系'),
@@ -37,7 +37,7 @@ class Member(MP_Node):
 
 class UserProfile(models.Model):
   tree_branch=(
-('1',u'翰章支系'),
+('1',u'瀚章支系'),
 ('2',u'鸿章支系'),
 ('3',u'鹤章支系'),
 ('4',u'蕴章支系'),
@@ -76,7 +76,7 @@ class postimage(models.Model):
 
 def send_notification(sender,instance,created,**kwargs):
    if created:
-            message = u"有新用户注册："+ instance.first_name + instance.last_name +"    "+ r"www.hefei-lis.com/admin/auth/user/"+str(instance.pk)
+            message = u"有新用户注册："+ instance.last_name + instance.first_name +"    "+ r"www.hefei-lis.com/admin/auth/user/"+str(instance.pk)
             subject = instance.username+u"刚刚注册，请查看"
             send_mail(subject,message,'noreply@hefei-lis.com',['lishefei@gmail.com'],fail_silently=False)
 
