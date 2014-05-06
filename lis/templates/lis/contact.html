@@ -1,9 +1,10 @@
 {% extends 'lis/base.html' %}
+{% load staticfiles %}
 {% block body %}
 	<div id="contents">
 		<div id="contact" class="wrapper clearfix">
 			<div id="sidebar">
-				
+				<img src="{% static "lis/images/lhz/hhh.jpg" %}" alt="Img" height="300" width="400" >
 				
 			</div>
 			<div class="main">
@@ -42,6 +43,12 @@
 			</div>
 		</div>
 	</div>
+	<div class="photos">
+					<div class="viewer">
+	
+	<img src="{% static "lis/images/lhz/ppp.jpg" %}">
+</div>
+</div>
 	<div id="footer">
 		<ul id="featured" class="wrapper clearfix">
 			<li>

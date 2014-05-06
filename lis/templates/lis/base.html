@@ -564,6 +564,9 @@ img {
 					<a href="/family/tree/">世系表</a>
 				</li>
 				<li>
+					<a href="/article/">家族论坛</a>
+				</li>
+				<li>
 					<a href="/family/contact/">家族联系</a>
 				</li>
 				<li>
@@ -577,7 +580,7 @@ img {
 	欢迎: <a href="{% url 'profile' %}">{{ user }}</a> | <a href="{% url 'logout' %}">退出</a>
         {% else %}
 
-<a>你还未登录</a>
+<a href="{% url 'login' %}">你还未登录</a>
         {% endif %}
 				</li>
 			</ul>
@@ -592,13 +595,13 @@ img {
 						<h4>社交</h4>
 						<ul>
 							<li>
-								<a href="" target="_blank">QQ群: 339072448</a>
+								<a target="_blank">QQ群: 339072448</a>
 							</li>
 							<li>
-								<a href="" target="_blank">微信群：</a>
+								<a target="_blank">微信群：请和管理员联系</a>
 							</li>
 							<li>
-								<a href="" target="_blank">邮件：lishefei@gmail.com</a>
+								<a target="_blank">邮件：lishefei@gmail.com</a>
 							</li>
 						</ul>
 					</div>

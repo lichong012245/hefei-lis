@@ -76,6 +76,20 @@ class postimage(models.Model):
         super(postimage,self).save()
 
 ## send email when user is created
+class Article(models.Model):
+    title=models.CharField(max_length=225)
+    author=models.CharField(max_length=225,blank=True,null=True)
+    body=models.TextField()
+    is_display=models.BooleanField()
+
+    class Meta:
+        verbose_name = 'Article'
+        verbose_name_plural = 'Articles'
+
+    def __unicode__(self):
+        return self.title
+    
+
 
 def send_notification(sender,instance,created,**kwargs):
    if created:

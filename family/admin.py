@@ -1,7 +1,7 @@
 from django.contrib import admin
 from treebeard.admin import TreeAdmin
 from treebeard.forms import movenodeform_factory
-from family.models import Member, postimage, UserProfile
+from family.models import Member, postimage, UserProfile,Article
 from django import forms
 from family.forms import UserProfileAdminForm
 from django.contrib.auth.admin import UserAdmin
@@ -30,8 +30,11 @@ class NewUserAdmin(UserAdmin):
         UserProfileInline,
     ]
      
+class ArticleAdmin(admin.ModelAdmin):
+     pass     
     
 
 admin.site.register(Member, MyAdmin)
 admin.site.unregister(User)
 admin.site.register(User, NewUserAdmin)
+admin.site.register(Article, ArticleAdmin)

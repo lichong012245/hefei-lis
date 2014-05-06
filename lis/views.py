@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from family.forms import UserProfileForm
+from family.models import Article
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.template import RequestContext
@@ -50,3 +51,8 @@ def UserProfile(request):
       else:              
              profile_form=  UserProfileForm()                
       return render(request, 'registration/profile.html',{'profile_form':profile_form})
+
+@login_required
+def ShowArticle(request):
+  object_articles = Article.objects.filter(is_display=True)
+  return render(request,'lis/article.html',{'articles':object_articles})

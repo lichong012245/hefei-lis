@@ -1,0 +1,27 @@
+{% extends 'lis/base.html' %}
+
+{% block body %}
+	<div id="contents">
+		<div class="wrapper clearfix">
+	
+			<div class="main">
+				<h1>家族论坛</h1>
+				
+                                      {% for article in articles %}
+                                        <h1>{{article.title}}</h1>
+                                        <p>{{article.author}}</p>
+                                        <p>{{article.body|linebreaksbr}}</p>
+                                        <br/><br/><br/>
+
+				{% empty %}
+                                        <p></p>
+                            {% endfor %}
+				
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<ul id="featured" class="wrapper clearfix">
+			论坛文章会定期更新，请经常关注。
+		</ul>
+		{% endblock %}

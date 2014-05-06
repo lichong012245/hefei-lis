@@ -6,7 +6,7 @@ from django.contrib import admin, auth
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
 from family.forms import UserCreateForm
-from views import UserProfile, Index, Contact,Gallery
+from views import UserProfile, Index,Contact,Gallery,ShowArticle
 from django.core.urlresolvers import reverse_lazy
 
 dajaxice_autodiscover()
@@ -21,6 +21,7 @@ urlpatterns = patterns('',
     url(r'^accounts/logout/$','django.contrib.auth.views.logout',{'next_page':'/'}),
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^contact/$', Contact, name='contact'),
+    url(r'^article/$', ShowArticle, name='article'),
   
     
 
