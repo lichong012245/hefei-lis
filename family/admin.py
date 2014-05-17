@@ -33,8 +33,11 @@ class NewUserAdmin(UserAdmin):
 class ArticleAdmin(admin.ModelAdmin):
      pass     
     
+class PostImageAdmin(admin.ModelAdmin):
+    model = postimage
 
 admin.site.register(Member, MyAdmin)
 admin.site.unregister(User)
 admin.site.register(User, NewUserAdmin)
 admin.site.register(Article, ArticleAdmin)
+admin.site.register(postimage,PostImageAdmin)
