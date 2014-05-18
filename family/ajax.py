@@ -18,12 +18,12 @@ def get_first_thumbnail_of_member(object):
          except IndexError:       
            return 'https://lishefei.s3.amazonaws.com/lis/images/lhz/placeholder.png'
 
-def get_nth_item_image_of_member(object,n):
-  try:
-    r=object.postimage_set.order_by('id')[n-1:n]    
-    return r.image.url    
-  except:   
-     return 'test'  
+def get_nth_item_image_of_member(object,n):  
+    r=list(object.postimage_set.all().order_by('id')[n-1:n])
+    if r:
+     return r[0].image.url 
+    return ''   
+   
 
 @dajaxice_register
 def get_member(req, pk):
