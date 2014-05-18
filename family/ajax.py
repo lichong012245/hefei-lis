@@ -12,17 +12,19 @@ def show_sex_in_chinese(sex):
 
 def get_first_thumbnail_of_member(object):
          try:
-           r=object.postimage_set.order_by('id')[0]
+           r=object.postimage_set.all).order_by('id')[0]
            if r:
                 return r.thumbnail.url
          except IndexError:       
            return 'https://lishefei.s3.amazonaws.com/lis/images/lhz/placeholder.png'
 
 def get_nth_item_image_of_member(object,n):
-  r=object.postimage_set.order_by('id')[n-1:n]
-  if r:
-    return r.image.url
-  return ''  
+  try:
+    r=object.postimage_set.all().order_by('id')[n-1:n]
+    if r:
+     return r.image.url
+  except IndexError:   
+     return ''  
 
 @dajaxice_register
 def get_member(req, pk):
