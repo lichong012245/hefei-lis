@@ -35,6 +35,7 @@ class ArticleAdmin(admin.ModelAdmin):
     
 class PostImageAdmin(admin.ModelAdmin):
     model = postimage
+    list_display = ('image','thumbnail','member')
 
 admin.site.register(Member, MyAdmin)
 admin.site.unregister(User)
