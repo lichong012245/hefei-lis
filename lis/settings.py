@@ -136,7 +136,8 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '5392ofi-dkrut*j0nrql2-j4&amp;0pr^j18v__@1wvc29c8@%@(wj'
+SECRET_KEY = os.environ['SECRET_KEY']
+
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -260,8 +261,8 @@ if not DEBUG:
 if not DEBUG:
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     #STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-    AWS_ACCESS_KEY_ID = 'AKIAJ25QNGITHFPBTFXA'
-    AWS_SECRET_ACCESS_KEY = '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'
+    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
     AWS_STORAGE_BUCKET_NAME = 'lishefei'
     #S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
    # STATIC_URL = S3_URL
